@@ -11,6 +11,11 @@ void clearScreen(void) {
     system("cls");
     #endif
 }
+
+char xor_en(char *key, char *pass) {
+    int i = 0;
+    for(i;i<sizeof(pass);i++) {
+    }
 void shell() {
     char * inputShell = malloc(2);
     while(1) {
