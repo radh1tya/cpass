@@ -2,8 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-void help(void);
-void about(void);
+void help(void) {
+	printf("a - add new password\n");
+	printf("l - list saved password\n");
+	printf("h - help\n");
+	printf("q - quit\n");
+}
 void clearScreen(void) {
 #if defined(__linux__) || defined(__unix__)
     printf("\e[1;1H\e[2J");
@@ -22,18 +26,19 @@ char xor_en(char *pass, char *key) {
 }
 void shell() {
     char * inputShell = malloc(2);
+    size_t len;
     while(1) {
 	printf("cpass> ");
-	fgets(inputShell,2,stdin);
+	getline(&inputShell,&len,stdin);
 	if(*inputShell == 'q') {
 	    printf("goodbye sir :(\n");
 	    break;
-	    if(*inputShell == 'h') {
+	}
+	else if(*inputShell == 'h') {
 		help();
 	    }
-	    if(*inputShell == 'v') {
-		about();
-	    }
+	else if(*inputShell == 'v') {
+		printf("cpass - simple pass manager\n");
 	}
     }
 }
