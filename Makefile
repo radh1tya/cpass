@@ -5,5 +5,5 @@ OUTPUT = cpass
 install:
 	$(CC) $(INPUT) -o $(OUTPUT)
 
-remove:
+clean:
 	rm $(OUTPUT)
