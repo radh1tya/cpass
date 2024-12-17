@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 void help(void);
 void about(void);
@@ -12,10 +13,13 @@ void clearScreen(void) {
     #endif
 }
 
-char xor_en(char *key, char *pass) {
-    int i = 0;
-    for(i;i<sizeof(pass);i++) {
+char xor_en(char *pass, char *key) {
+	char *output = malloc(sizeof(output) + 1);
+    for(int i = 0;i<strlen(pass);++i) {
+	    output[i] = pass[i] ^ key[i % strlen(key)];
     }
+    return (*output);
+}
 void shell() {
     char * inputShell = malloc(2);
     while(1) {
